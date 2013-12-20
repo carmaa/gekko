@@ -51,7 +51,7 @@ Util.inherits(TradingMethod, CandleMethod);
 // prepare the candleMethod this trade method 
 // is extending.
 TradingMethod.prototype.prepare = function() {
-  log.info('Calculating EMA on historical data...');
+  // log.info('Calculating EMA on historical data...');
   // setup method specific parameters
   this.ema = {
     short: [],

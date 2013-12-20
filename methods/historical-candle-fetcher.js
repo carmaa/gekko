@@ -94,7 +94,7 @@ CandleCalculator.prototype.addCandle = function(line) {
       this.startPrice = _.first(this.candles.open);
       this.startTime = this.currentTimestamp;
       this.fetchingHistorical = false;
-      log.info('calculated initial EMA, simulating remaining candles')
+      // log.info('calculated initial EMA, simulating remaining candles')
     }
     this.emit('calculated new candle');
   }

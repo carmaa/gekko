@@ -86,7 +86,11 @@ config.profitCalculator = {
 //                ADVISED TO MAKE REAL WORLD DECISIONS BASED ON THE RESULTS
 //                UNTIL THE CODE HAS BEEN PROVED SOLID.
 config.backtest = {
-  candleFile: 'candles.csv',
+  //candleFile: 'candles.csv',
+  //candleFile: '../../gekko/candlecalculator/2012-2013.csv',
+  candleFile: '../../gekko/candlecalculator/april-crash.csv',
+  //candleFile: '../../gekko/candlecalculator/2013.csv',
+  //candleFile: '../../gekko/candlecalculator/boom-2013.csv',
   from: 0,
   to: 0
 }

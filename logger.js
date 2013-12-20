@@ -30,8 +30,8 @@ var Logger = function(config) {
 
   _.bindAll(this);
 
-  if(config.enabled)
-    log.info('Profit reporter active on simulated balance');
+  // if(config.enabled)
+    // log.info('Profit reporter active on simulated balance');
 }
 
 // log advice
@@ -42,7 +42,7 @@ Logger.prototype.inform = function(what, price, meta) {
   if(!this.verbose && what === 'HOLD' && this.config.backtest)
     return;
 
-  log.info('ADVICE is to', what, meta);
+  // log.info('ADVICE is to', what, meta);
 }
 
 Logger.prototype.extractFee = function(amount) {
@@ -102,65 +102,70 @@ Logger.prototype.finish = function(data) {
     return amount.toFixed(6);
   }
 
-  console.log();
-  console.log();
+  // console.log();
+  // console.log();
   
-  log.info('\tWARNING: BACKTESTING FEATURE NEEDS PROPER TESTING')
-  log.info('\tWARNING: ACT ON THESE NUMBERS AT YOUR OWN RISK!')
+  // // log.info('\tWARNING: BACKTESTING FEATURE NEEDS PROPER TESTING')
+  // // log.info('\tWARNING: ACT ON THESE NUMBERS AT YOUR OWN RISK!')
 
-  console.log();
-  console.log();
+  // console.log();
+  // console.log();
 
   var start = moment.unix(data.startTime);
   var end = moment.unix(data.endTime);
   var timespan = end.diff(start, 'days');
 
-  log.info(
-    '(PROFIT REPORT)',
-    'start time:\t\t\t',
-    start.format('YYYY-MM-DD HH:mm:ss')
-  );
+  // log.info(
+  //   '(PROFIT REPORT)',
+  //   'start time:\t\t\t',
+  //   start.format('YYYY-MM-DD HH:mm:ss')
+  // );
 
-  log.info(
-    '(PROFIT REPORT)',
-    'end time:\t\t\t',
-    end.format('YYYY-MM-DD HH:mm:ss')
-  );
+  // log.info(
+  //   '(PROFIT REPORT)',
+  //   'end time:\t\t\t',
+  //   start.format('YYYY-MM-DD HH:mm:ss')
+  // );
 
-  log.info(
-    '(PROFIT REPORT)',
-    'timespan:\t\t\t',
-    timespan,
-    'days'
-  );
+  // log.info(
+  //   '(PROFIT REPORT)',
+  //   'timespan:\t\t\t',
+  //   timespan,
+  //   'days'
+  // );
 
-  console.log();
+  // console.log();
 
-  log.info(
-    '(PROFIT REPORT)',
-    'start price:\t\t\t',
-    data.start
-  );
+  // log.info(
+  //   '(PROFIT REPORT)',
+  //   'start price:\t\t\t',
+  //   data.start
+  // );
 
-  log.info(
-    '(PROFIT REPORT)',
-    'end price:\t\t\t',
-    data.end
-  );
+  // log.info(
+  //   '(PROFIT REPORT)',
+  //   'end price:\t\t\t',
+  //   data.end
+  // );
 
-  log.info(
-    '(PROFIT REPORT)',
-    'Buy and Hold profit:\t\t',
-    round((data.end - data.start) / data.start * 100) + '%'
-  );
+  // log.info(
+  //   '(PROFIT REPORT)',
+  //   'Buy and Hold profit:\t\t',
+  //   round((data.end - data.start) / data.start * 100) + '%'
+  // );
 
-  console.log();
+  // console.log();
 
-  log.info(
-    '(PROFIT REPORT)',
-    'amount of trades:\t\t',
-    this.trades
-  );
+  // log.info(
+  //   '(PROFIT REPORT)',
+  //   'amount of trades:\t\t',
+  //   this.trades
+  // );
+  
+  process.stdout.write(this.config.EMA.short  + "," + this.config.EMA.long  + "," + this.config.EMA.sellTreshold  + "," + 
+    this.config.EMA.buyTreshold + "," + start.format('YYYY-MM-DD HH:mm:ss') + "," + end.format('YYYY-MM-DD HH:mm:ss') + "," + 
+    timespan + "," + data.start + "," + data.end + "," + round((data.end - data.start) / data.start * 100) + '%' + "," + 
+    this.trades + ",");
 
   this.report(timespan);
 }
@@ -170,39 +175,46 @@ Logger.prototype.report = function(timespan) {
     return amount.toFixed(6);
   }
 
-  log.info(
-    '(PROFIT REPORT)',
-    'original simulated balance:\t',
-    round(this.start.balance),
-    this.reportIn
-  );
+  // log.info(
+  //   '(PROFIT REPORT)',
+  //   'original simulated balance:\t',
+  //   round(this.start.balance),
+  //   this.reportIn
+  // );
 
-  log.info(
-    '(PROFIT REPORT)',
-    'current simulated balance:\t',
-    round(this.current.balance),
-    this.reportIn
-  );
+  // log.info(
+  //   '(PROFIT REPORT)',
+  //   'current simulated balance:\t',
+  //   round(this.current.balance),
+  //   this.reportIn
+  // );
 
-  log.info(
-    '(PROFIT REPORT)',
-    'simulated profit:\t\t',
-    round(this.profit),
-    this.reportIn,
-    '(' + round(this.relativeProfit) + '%)'
-  );
+  // log.info(
+  //   '(PROFIT REPORT)',
+  //   'simulated profit:\t\t',
+  //   round(this.profit),
+  //   this.reportIn,
+  //   '(' + round(this.relativeProfit) + '%)'
+  // );
 
-  if(timespan) {
-    var timespanPerYear = 356 / timespan;
+  // if(timespan) {
+  //   var timespanPerYear = 356 / timespan;
 
-    log.info(
-      '(PROFIT REPORT)',
-      'simulated yearly profit:\t',
-      round(this.profit * timespanPerYear),
-      this.reportIn,
-      '(' + round(this.relativeProfit * timespanPerYear) + '%)'
-    );
-  }
+  //   log.info(
+  //     '(PROFIT REPORT)',
+  //     'simulated yearly profit:\t',
+  //     round(this.profit * timespanPerYear),
+  //     this.reportIn,
+  //     '(' + round(this.relativeProfit * timespanPerYear) + '%)'
+  //   );
+  // }
+  var timespanPerYear = 356 / timespan;
+  process.stdout.write(round(this.start.balance) + "," + this.reportIn + "," + 
+    round(this.current.balance) + "," + this.reportIn + "," + 
+    round(this.profit) + "," + this.reportIn + "," + 
+    round(this.relativeProfit) + '%' + "," + 
+    round(this.profit * timespanPerYear) + "," + this.reportIn + "," + 
+    round(this.relativeProfit * timespanPerYear) + '%\n');
 }
 
 
